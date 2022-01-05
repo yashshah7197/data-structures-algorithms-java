@@ -70,6 +70,37 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     }
 
     /**
+     * Adds the given element to the beginning of the list.
+     *
+     * @param element the element to be added.
+     */
+    public void addFirst(E element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Cannot add null elements to the list!");
+        }
+
+        sentinelHead.next = new Node<>(element, sentinelHead.next);
+        size += 1;
+    }
+
+    /**
+     * Adds the given element to the end of the list.
+     *
+     * @param element the element to be added.
+     */
+    public void addLast(E element) {
+        if (element == null) {
+            throw new IllegalArgumentException("Cannot add null elements to the list!");
+        }
+
+        Node<E> newNode = new Node<>(element, null);
+        tail.next = newNode;
+        tail = newNode;
+
+        size += 1;
+    }
+
+    /**
      * Clear the entire list.
      */
     @Override
@@ -123,6 +154,32 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         return current.data;
+    }
+
+    /**
+     * Retrieves the first element of the list.
+     *
+     * @return the first element of the list.
+     */
+    public E getFirst() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+
+        return sentinelHead.next.data;
+    }
+
+    /**
+     * Retrieves the last element of the list.
+     *
+     * @return the last element of the list.
+     */
+    public E getLast() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+
+        return tail.data;
     }
 
     /**
@@ -228,6 +285,32 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
         }
 
         return false;
+    }
+
+    /**
+     * Removes the first element from the list.
+     *
+     * @return the element currently first in the list.
+     */
+    public E removeFirst() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+
+        return remove(0);
+    }
+
+    /**
+     * Removes the last element from the list.
+     *
+     * @return the element currently last in the list.
+     */
+    public E removeLast() {
+        if (size == 0) {
+            throw new NoSuchElementException();
+        }
+
+        return remove(size - 1);
     }
 
     /**
