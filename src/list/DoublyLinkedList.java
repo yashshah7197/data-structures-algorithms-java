@@ -97,6 +97,8 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
         Node<E> newNode = new Node<>(element, sentinelTail.previous, sentinelTail);
         newNode.previous.next = newNode;
         newNode.next.previous = newNode;
+
+        size += 1;
     }
 
     /**
@@ -312,6 +314,8 @@ public class DoublyLinkedList<E> implements List<E>, Iterable<E> {
 
         nodeToRemove.previous.next = nodeToRemove.next;
         nodeToRemove.next.previous = nodeToRemove.previous;
+
+        size -= 1;
 
         return nodeToRemove.data;
     }
