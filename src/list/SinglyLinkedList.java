@@ -16,7 +16,7 @@ public class SinglyLinkedList<E> implements List<E>, Iterable<E> {
     /**
      * Constructs a new SinglyLinkedList.
      */
-    private SinglyLinkedList() {
+    public SinglyLinkedList() {
         size = 0;
         sentinelHead = new Node<>(null, null);
         tail = sentinelHead;
