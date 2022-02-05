@@ -238,6 +238,29 @@ public class ArrayList<E> implements List<E>, Iterable<E> {
         return size;
     }
 
+    /**
+     * Return a string representation of the ArrayList.
+     *
+     * @return a string representation of the ArrayList.
+     */
+    @Override
+    public String toString() {
+        if (size == 0) {
+            return "[]";
+        }
+
+        StringBuilder builder = new StringBuilder();
+        builder.append("[");
+
+        for (int i = 0; i < size - 1; i++) {
+            builder.append(array[i]).append(", ");
+        }
+
+        builder.append(array[size - 1]).append("]");
+
+        return builder.toString();
+    }
+
     private void resizeArray(int newCapacity) {
         E[] newArray = (E[]) new Object[newCapacity];
 
